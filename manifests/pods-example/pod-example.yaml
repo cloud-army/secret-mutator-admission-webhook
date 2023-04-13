@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: envserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: envserver
+  template:
+    metadata:
+      labels:
+        app: envserver
+    spec:
+      containers:
+      - name: envserver
+        image: nautiker/test-env
+        imagePullPolicy: Always
+        command: ["entrypoint.sh"]

@@ -1,0 +1,28 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: "carmy-kubernetes-webhook"
+  annotations:
+    cert-manager.io/inject-ca-from: mutator/admission-example-tls-secret # $(CERTIFICATE_NAMESPACE)
+webhooks:
+  - name: "carmy-kubernetes-webhook.cloud-army.com"
+    namespaceSelector:
+      matchLabels:
+        admission-webhook: enabled
+    rules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE"]
+        resources: ["pods", "deployments"]
+        scope: "*"
+    sideEffects: None
+    clientConfig:
+      service:
+        name: carmy-kubernetes-webhook
+        namespace: mutator
+        path: /mutate
+      caBundle: ""
+    timeoutSeconds: 30
+    failurePolicy: Fail
+    matchPolicy: Equivalent
+    admissionReviewVersions: ["v1"]
