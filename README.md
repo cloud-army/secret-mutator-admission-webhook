@@ -1,15 +1,14 @@
-# cloud-army-kubernetes-webhook (mutator)
+# cloud-army-admission-controller
 
 ![](/img/2023-04-13_19-04.png) 
-WIPPPPPPPPPP
-This is a [Kubernetes mutator webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/). It is meant to be used as a mutating admission webhook to add container-init and custom binary to extract and add secret environment to the entrypoint. It has been developed as a simple Go web service without using any framework or boilerplate such as kubebuilder.
-
+This is a [Kubernetes admission controller] to be used as a mutating admission webhook to add a container-init with a custom binary to extract and add secrets environments from GCP Secret Manager to the container entrypoint. It has been developed as a simple Go web service.
 
 ## Installation
 
 ### Requirements
 * Docker
 * kubectl
+* cert-manager
 
 ## Usage
 ### Deploy Admission Webhook
@@ -19,8 +18,12 @@ To configure the cluster to use the admission webhook and to deploy said webhook
 ⚙️  Applying cluster config...
 kubectl apply -f manifests/cluster-config/
 namespace/apps created
-x
-x
+issuer/admission-issuer created
+certificate/admission-tls-secret created
+issuer/admission-issuer created
+mutatingwebhookconfiguration/carmy-kubernetes-webhook created
+
+### _🚨 IMPORTANT NOTE: cert-manager is necesary to create Self-Sign certificates🚨_
 
 🚀 Deploying carmor-kubernetes-webhook...
 kubectl apply -f manifests/webhook/
@@ -28,27 +31,68 @@ deployment.apps/carmor-kubernetes-webhook created
 service/carmor-kubernetes-webhook created
 ```
 
-Then, make sure the admission webhook pod is running (in the `default` namespace):
+Then, make sure the admission webhook pod is running (in the `mutator` namespace):
 ```
 ❯ kubectl get pods
 NAME                                        READY   STATUS    RESTARTS   AGE
 carmor-kubernetes-webhook-77444566b7-wzwmx   1/1     Running   0          2m21s
 ```
 
-And hit it's health endpoint from your local machine:
-```
-❯ curl -k https://localhost:8443/health
-OK
-```
-
 ### Deploying pods
-Deploy a valid test pod that gets succesfully created:
+Deploy a test pod that gets succesfully created:
 ```
 
-🚀 Deploying test pod...
-kubectl apply -f manifests/pods/xxxxx.yaml
-pod/lifespan-seven created
-```
-You should see in the admission webhook logs that the pod got mutated and validated.
+🚀 Building and Deploying a test pod...
+kubectl apply -f manifests/pods/pod-example.yaml
+pod/envserver created
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: envserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: envserver
+  template:
+    metadata:
+      labels:
+        app: envserver
+    spec:
+      containers:
+      - name: envserver
+        image: xxxxxxxxxx
+        imagePullPolicy: Always
+        command: ["entrypoint.sh"]
 
 ```
+
+### _🚨 NOTE: For test, you should create a docker image with a simple entrypoint that use printenv & sleep with time in seconds and the secret-manager-file🚨_
+
+About the secret-manager-file this is his estructure:
+
+```json
+{
+    "secrets":[
+        {
+            "env":"",
+            "name":"projects/86303628392/secrets/camunda-compiled-dev/versions/latest"
+        }
+    ],
+    "config":
+        {
+            "convert_to_uppercase_var_names": true
+        }
+}
+
+```
+### K8S references:
+
+- https://github.com/GoogleCloudPlatform/berglas/tree/main/examples/kubernetes
+
+- https://www.sobyte.net/post/2023-01/cert-manager-admission-webhook/
+
+- https://cert-manager.io/docs/troubleshooting/webhook/
+
