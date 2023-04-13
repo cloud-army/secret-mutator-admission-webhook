@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: admission-example-issuer
+  name: admission-issuer
   namespace: mutator
 spec:
   selfSigned: {}
@@ -9,14 +9,11 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: admission-example-tls-secret
+  name: admission-tls-secret
   namespace: mutator
 spec:
   duration: 8760h
   renewBefore: 8000h
-  subject:
-    organizations:
-    - xxxxxxxxxxxxxx
   commonName: carmy-kubernetes-webhook.mutator
   isCA: false
   privateKey:
@@ -33,5 +30,5 @@ spec:
     - carmy-kubernetes-webhook.mutator.svc
   issuerRef:
     kind: Issuer
-    name: admission-example-issuer
-  secretName: admission-webhook-example-certs
+    name: admission-issuer
+  secretName: admission-webhook-certs

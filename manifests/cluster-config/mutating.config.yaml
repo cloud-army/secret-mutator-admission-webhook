@@ -3,7 +3,7 @@ kind: MutatingWebhookConfiguration
 metadata:
   name: "carmy-kubernetes-webhook"
   annotations:
-    cert-manager.io/inject-ca-from: mutator/admission-example-tls-secret # $(CERTIFICATE_NAMESPACE)
+    cert-manager.io/inject-ca-from: mutator/admission-tls-secret # $(CERTIFICATE_NAMESPACE)
 webhooks:
   - name: "carmy-kubernetes-webhook.cloud-army.com"
     namespaceSelector:

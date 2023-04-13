@@ -30,4 +30,4 @@ spec:
       volumes:
         - name: webhook-certs
           secret:
-            secretName: admission-webhook-example-certs
+            secretName: admission-webhook-certs
