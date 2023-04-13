@@ -1,4 +1,6 @@
 # cloud-army-kubernetes-webhook (mutator)
+
+![](/img/2023-04-13_19-04.png) 
 WIPPPPPPPPPP
 This is a [Kubernetes mutator webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/). It is meant to be used as a mutating admission webhook to add container-init and custom binary to extract and add secret environment to the entrypoint. It has been developed as a simple Go web service without using any framework or boilerplate such as kubebuilder.
 
