@@ -41,7 +41,7 @@ carmor-kubernetes-webhook-77444566b7-wzwmx   1/1     Running   0          2m21s
 ```
 ## Usage
 ### Deploying pods
-Deploy a test pod that gets secrets from GCP Secret Manager and print its in the pod console:
+Build and Deploy a test pod that gets secrets from GCP Secret Manager and print its in the pod console:
 ```
 
 🚀 Building and Deploying a test pod...
