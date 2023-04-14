@@ -80,7 +80,7 @@ About the envsecrets-config.json, it is the place were declaring the GCP Secrets
     "secrets":[
         {
             "env":"",
-            "name":"projects/YOUR_SECRET_PROJECT_NAME/secrets/YOUR_SECRET_NAME/versions/latest"
+            "name":"projects/PROJECT_NUMBER/secrets/YOUR_SECRET_NAME/versions/latest"
         }
     ],
     "config":
