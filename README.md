@@ -39,7 +39,7 @@ carmor-kubernetes-webhook-77444566b7-wzwmx   1/1     Running   0          2m21s
 ```
 
 ### Deploying pods
-Deploy a test pod that gets succesfully created:
+Deploy a test pod that gets secret from secret manager and and print in the console:
 ```
 
 🚀 Building and Deploying a test pod...
