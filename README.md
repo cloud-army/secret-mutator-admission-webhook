@@ -67,7 +67,7 @@ spec:
       - name: envprinter
         image: xxxxxxxxxx
         imagePullPolicy: Always
-        command: ["entrypoint.sh"]
+        command: ["entrypoint.sh"] <<<<< Set the entrypoint as a command
 
 ```
 
