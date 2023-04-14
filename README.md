@@ -71,16 +71,16 @@ spec:
 
 ```
 
-### _🚨 IMPORTANT NOTE: For test, you should create a docker image with a simple entrypoint that use printenv & sleep with time in seconds and the secret-manager-file🚨_
+### _🚨 IMPORTANT NOTE: For test, you should create a docker image with a simple entrypoint that use printenv & sleep with time in seconds and a envsecrets-config.json🚨_
 
-About the secret-manager-file this is his estructure:
+About the envsecrets-config.json this is his estructure:
 
 ```json
 {
     "secrets":[
         {
             "env":"",
-            "name":"projects/86303628392/secrets/camunda-compiled-dev/versions/latest"
+            "name":"projects/YOUR_SECRET_PROJECT_NAME/secrets/YOUR_SECRET_NAME/versions/latest"
         }
     ],
     "config":
