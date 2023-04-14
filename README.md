@@ -101,3 +101,5 @@ About the envsecrets-config.json, it is the place were declaring the GCP Secrets
 - https://cert-manager.io/docs/installation/helm/
 
 - https://cloud.google.com/anthos-config-management/docs/how-to/using-cis-k8s-benchmark
+
+- https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=es-419
