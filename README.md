@@ -45,7 +45,7 @@ Deploy a test pod that gets secrets from GCP Secret Manager and print its in the
 ```
 
 🚀 Building and Deploying a test pod...
-kubectl apply -f manifests/pods/pod-example.yaml
+kubectl apply -f manifests/pods-example/pod-example.yaml
 pod/envserver created
 
 ```yaml
