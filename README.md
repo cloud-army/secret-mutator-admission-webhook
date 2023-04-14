@@ -26,7 +26,7 @@ issuer/admission-issuer created
 mutatingwebhookconfiguration/carmy-kubernetes-webhook created
 
 ```
-### _🚨 IMPORTANT NOTE: cert-manager is necesary to create the Admission Controller Self-Signed certificates🚨_
+### _🚨 IMPORTANT NOTE: cert-manager controller is necesary to create the Admission Controller Self-Signed certificates, and the namespace where running the applications should be labeled with 'admission-webhook: enabled'🚨_
 ```
 🚀 Deploying carmor-kubernetes-webhook...
 kubectl apply -f manifests/webhook/
