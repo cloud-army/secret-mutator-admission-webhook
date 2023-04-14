@@ -73,7 +73,7 @@ spec:
 
 ### _🚨 IMPORTANT NOTE: For test, you should create a docker image with a simple entrypoint that use printenv & sleep with time in seconds and a envsecrets-config.json🚨_
 
-About the envsecrets-config.json this is his estructure:
+About the envsecrets-config.json, it is the place were declaring the GCP Secrets resources, and its is his estructure:
 
 ```json
 {
