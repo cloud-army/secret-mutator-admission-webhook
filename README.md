@@ -24,7 +24,7 @@ issuer/admission-issuer created
 mutatingwebhookconfiguration/carmy-kubernetes-webhook created
 
 ```
-### _🚨 IMPORTANT NOTE: cert-manager is necesary to create Self-Sign certificates🚨_
+### _🚨 IMPORTANT NOTE: cert-manager is necesary to create the Admission Controller Self-Signed certificates🚨_
 
 
 ```
@@ -42,7 +42,7 @@ carmor-kubernetes-webhook-77444566b7-wzwmx   1/1     Running   0          2m21s
 ```
 
 ### Deploying pods
-Deploy a test pod that gets secret from secret manager and and print in the console:
+Deploy a test pod that gets secrets from GCP Secret Manager and print its in the pod console:
 ```
 
 🚀 Building and Deploying a test pod...
@@ -53,26 +53,26 @@ pod/envserver created
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: envserver
+  name: envprinter
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: envserver
+      app: envprinter
   template:
     metadata:
       labels:
-        app: envserver
+        app: envprinter
     spec:
       containers:
-      - name: envserver
+      - name: envprinter
         image: xxxxxxxxxx
         imagePullPolicy: Always
         command: ["entrypoint.sh"]
 
 ```
 
-### _🚨 NOTE: For test, you should create a docker image with a simple entrypoint that use printenv & sleep with time in seconds and the secret-manager-file🚨_
+### _🚨 IMPORTANT NOTE: For test, you should create a docker image with a simple entrypoint that use printenv & sleep with time in seconds and the secret-manager-file🚨_
 
 About the secret-manager-file this is his estructure:
 
