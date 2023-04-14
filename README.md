@@ -27,8 +27,6 @@ mutatingwebhookconfiguration/carmy-kubernetes-webhook created
 
 ```
 ### _🚨 IMPORTANT NOTE: cert-manager is necesary to create the Admission Controller Self-Signed certificates🚨_
-
-
 ```
 🚀 Deploying carmor-kubernetes-webhook...
 kubectl apply -f manifests/webhook/
