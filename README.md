@@ -1,4 +1,5 @@
 # cloud-army-admission-controller
+![Cloud Army Spartan Logo](/img/logo.png) 
 
 ![](/img/2023-04-13_19-04.png) 
 This is a [Kubernetes admission controller] to be used as a mutating admission webhook to add a container-init with a custom binary to extract secrets from GCP Secret Manager and to push this secret to the container entrypoint. This solution can be used to compliance with the CIS Kubernetes Benchmark v1.5.1 with the control id: 5.4.1 (no-secrets-as-env-vars).
