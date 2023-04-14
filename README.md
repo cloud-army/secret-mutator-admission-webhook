@@ -67,11 +67,11 @@ spec:
       - name: envprinter
         image: xxxxxxxxxx
         imagePullPolicy: Always
-        command: ["entrypoint.sh"] <<<<< Set the entrypoint as a command
+        command: ["entrypoint.sh"] <<<<< Use entrypoint.sh command like a standard name
 
 ```
 
-### _🚨 IMPORTANT NOTE: For test, you should create a docker image with a simple entrypoint that use printenv & sleep with time in seconds and a envsecrets-config.json🚨_
+### _🚨 IMPORTANT NOTE: For test, you should create a docker image with a simple entrypoint that use printenv & sleep with time in seconds and a envsecrets-config.json, and running the pods configuring and using workload identity🚨_
 
 About the envsecrets-config.json, it is the place were declaring the GCP Secrets resources that you need consume, and it's his estructure is:
 
