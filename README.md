@@ -10,6 +10,7 @@ This is a [Kubernetes admission controller] to be used as a mutating admission w
 * Docker
 * kubectl
 * cert-manager
+* golang
 
 ## Usage
 ### Deploy Admission Webhook
