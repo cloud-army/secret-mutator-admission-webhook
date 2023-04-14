@@ -12,7 +12,6 @@ This is a [Kubernetes admission controller] to be used as a mutating admission w
 * cert-manager
 * golang
 
-## Usage
 ### Deploy Admission Webhook
 To configure the cluster to use the admission webhook and to deploy said webhook, simply run:
 ```
@@ -40,7 +39,7 @@ Then, make sure the admission webhook pod is running (in the `mutator` namespace
 NAME                                        READY   STATUS    RESTARTS   AGE
 carmor-kubernetes-webhook-77444566b7-wzwmx   1/1     Running   0          2m21s
 ```
-
+## Usage
 ### Deploying pods
 Deploy a test pod that gets secrets from GCP Secret Manager and print its in the pod console:
 ```
