@@ -71,9 +71,9 @@ spec:
 
 ```
 
-### _🚨 IMPORTANT NOTE: For test, you should create a docker image with a simple entrypoint that use printenv & sleep with time in seconds and a envsecrets-config.json, and running the pods configuring and using workload identity🚨_
+### _🚨 IMPORTANT NOTE: For test, you should create a docker image with a simple entrypoint that use printenv & sleep with time in seconds, a envsecrets-config.json file, and running the pods using Workload Identity🚨_
 
-About the envsecrets-config.json, it is the place were declaring the GCP Secrets resources that you need consume, and it's his estructure is:
+About the envsecrets-config.json file, it is the place were declaring the GCP Secrets resources that you need consume, and it's his estructure is:
 
 ```json
 {
@@ -88,6 +88,7 @@ About the envsecrets-config.json, it is the place were declaring the GCP Secrets
             "convert_to_uppercase_var_names": true
         }
 }
+For more information about the envsecrets-config.json file, check this repo https://github.com/cloud-army/envsecrets
 
 ```
 ### K8S references:
