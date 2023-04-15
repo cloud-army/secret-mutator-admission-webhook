@@ -1,7 +1,16 @@
-# cloud-army-secret-admission-controller
 <p align="center">
     <img src="/img/logo.png" width="30%" align="center">
 </p>
+
+# cloud-army-secret-admission-controller
+
+![ci](https://github.com/external-secrets/external-secrets/actions/workflows/ci.yml/badge.svg?branch=main)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/5327/badge)](https://bestpractices.coreinfrastructure.org/projects/5947)
+[![Go Report Card](https://goreportcard.com/badge/github.com/external-secrets/external-secrets)](https://goreportcard.com/report/github.com/external-secrets/external-secrets)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fexternal-secrets%2Fexternal-secrets.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fexternal-secrets%2Fexternal-secrets?ref=badge_shield)
+<a href="https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets"><img alt="Artifact Hub" src="https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/external-secrets" /></a>
+<a href="https://operatorhub.io/operator/external-secrets-operator"><img alt="operatorhub.io" src="https://img.shields.io/badge/operatorhub.io-external--secrets-brightgreen" /></a>
+
 
 ![](/img/2023-04-13_19-04.png) 
 This is a [Kubernetes admission controller] to be used as a mutating admission webhook to add a container-init with a custom binary that extract secrets from GCP Secret Manager and to push this secrets to the container entrypoint sub-process. This solution can be used to compliance with the CIS Kubernetes Benchmark v1.5.1 specially with the control id: 5.4.1 (no-secrets-as-env-vars).
