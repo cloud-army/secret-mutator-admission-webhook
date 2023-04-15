@@ -88,9 +88,9 @@ About the envsecrets-config.json file, it is the place were declaring the GCP Se
             "convert_to_uppercase_var_names": true
         }
 }
+```
 For more information about the envsecrets-config.json file, check this repo https://github.com/cloud-army/envsecrets
 
-```
 ### K8S references:
 
 - https://github.com/GoogleCloudPlatform/berglas/tree/main/examples/kubernetes
