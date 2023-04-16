@@ -20,7 +20,7 @@ helm dependency update ## Install all the dependencies, including cert manager
 helm install cloud-army-secret-injector xxxxxxx
 
 ```
-### _🚨 IMPORTANT NOTE: if you have cert-manager controller in your cluster, then modify the values file in the cert-manager segment. 🚨_
+### _🚨 IMPORTANT NOTE: If you have cert-manager controller installed in your cluster, then install cloud-army-secret-injector with the option --set cert-manager.enabled=false 🚨_
 
 Then, make sure the admission webhook pod is running (in the `mutator` namespace):
 ```
