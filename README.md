@@ -10,42 +10,40 @@ This is a [Kubernetes admission controller] to be used as a mutating admission w
 
 ## Installation
 
-### Requirements
-* Docker
-* kubectl
-* cert-manager
-* golang
-
 ### Deploy Admission Webhook
 To configure the cluster to use the admission webhook and to deploy said webhook, simply run:
 ```
+helm repo add xxxxx https://charts.xxxxx.io
 
-⚙️  Applying cluster config...
-kubectl apply -f manifests/cluster-config/
-namespace/apps created
-issuer/admission-issuer created
-certificate/admission-tls-secret created
-issuer/admission-issuer created
-mutatingwebhookconfiguration/carmy-kubernetes-webhook created
+helm dependency update ## Install all the dependencies, including cert manager
+
+helm install cloud-army-secret-injector xxxxxxx
 
 ```
-### _🚨 IMPORTANT NOTE: cert-manager controller is necesary to create the Admission Controller Self-Signed certificates, and the namespace where running the applications should be labeled with 'admission-webhook: enabled'🚨_
-```
-🚀 Deploying carmor-kubernetes-webhook...
-kubectl apply -f manifests/webhook/
-deployment.apps/carmor-kubernetes-webhook created
-service/carmor-kubernetes-webhook created
-```
+### _🚨 IMPORTANT NOTE: if you have cert-manager controller in your cluster, then modify the values file in the cert-manager segment. 🚨_
 
 Then, make sure the admission webhook pod is running (in the `mutator` namespace):
 ```
-❯ kubectl get pods
-NAME                                        READY   STATUS    RESTARTS   AGE
-carmor-kubernetes-webhook-77444566b7-wzwmx   1/1     Running   0          2m21s
+❯ k get all -n mutator
+NAME                                           READY   STATUS    RESTARTS   AGE
+pod/carmy-kubernetes-webhook-86f44f55d-qrshk   1/1     Running   0          34h
+pod/test-deployment-5dbbd7b8b8-d2n6l           1/1     Running   0          2d7h
+
+NAME                               TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/carmy-kubernetes-webhook   ClusterIP   10.192.48.14   <none>        443/TCP   4d2h
+
+NAME                                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/carmy-kubernetes-webhook   1/1     1            1           2d13h
+deployment.apps/test-deployment            1/1     1            1           9d
+
+NAME                                                 DESIRED   CURRENT   READY   AGE
+replicaset.apps/carmy-kubernetes-webhook-86f44f55d   1         1         1       2d13h
+replicaset.apps/test-deployment-5dbbd7b8b8           1         1         1       9d
+
 ```
 ## Usage
 ### Deploying pods
-Build and Deploy a test pod that gets secrets from GCP Secret Manager and print its in the pod console:
+Build and Deploy a test pod that gets secrets from GCP Secret Manager and print its in the pod console, remember that: The namespace where running the applications should be labeled with 'admission-webhook: enabled':
 ```
 
 🚀 Building and Deploying a test pod...
