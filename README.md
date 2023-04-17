@@ -20,23 +20,20 @@ helm install cloud-army-secret-injector secret-mutator
 ```
 ### _🚨 IMPORTANT NOTE: Cert-manager controller should be installed in your cluster 🚨_
 
-Then, make sure the admission webhook pod is running (in the `mutator` namespace):
+Then, make sure the admission webhook resources are correctly configured (in the `mutator` namespace):
 ```
-❯ k get all -n mutator
 NAME                                           READY   STATUS    RESTARTS   AGE
-pod/carmy-kubernetes-webhook-86f44f55d-qrshk   1/1     Running   0          34h
-pod/test-deployment-5dbbd7b8b8-d2n6l           1/1     Running   0          2d7h
+pod/carmy-kubernetes-webhook-87c777467-rkc9s   1/1     Running   0          35s
+pod/carmy-kubernetes-webhook-87c777467-wqztv   1/1     Running   0          35s
 
 NAME                               TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
-service/carmy-kubernetes-webhook   ClusterIP   10.192.48.14   <none>        443/TCP   4d2h
+service/carmy-kubernetes-webhook   ClusterIP   10.192.49.76   <none>        443/TCP   36s
 
 NAME                                       READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/carmy-kubernetes-webhook   1/1     1            1           2d13h
-deployment.apps/test-deployment            1/1     1            1           9d
+deployment.apps/carmy-kubernetes-webhook   2/2     2            2           36s
 
 NAME                                                 DESIRED   CURRENT   READY   AGE
-replicaset.apps/carmy-kubernetes-webhook-86f44f55d   1         1         1       2d13h
-replicaset.apps/test-deployment-5dbbd7b8b8           1         1         1       9d
+replicaset.apps/carmy-kubernetes-webhook-87c777467   2         2         2       36s
 
 ```
 ## Usage
