@@ -15,12 +15,10 @@ To configure the cluster to use the admission webhook and to deploy said webhook
 ```
 helm repo add xxxxx https://charts.xxxxx.io
 
-helm dependency update ## Install all the dependencies, including cert manager
-
 helm install cloud-army-secret-injector xxxxxxx
 
 ```
-### _🚨 IMPORTANT NOTE: If you have cert-manager controller installed in your cluster, then install cloud-army-secret-injector with the option --set cert-manager.enabled=false 🚨_
+### _🚨 IMPORTANT NOTE: Cert-manager controller should be installed in your cluster 🚨_
 
 Then, make sure the admission webhook pod is running (in the `mutator` namespace):
 ```
