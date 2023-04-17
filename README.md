@@ -16,7 +16,7 @@ To configure the cluster to use the admission webhook and to deploy said webhook
 git clone https://github.com/cloud-army/secret-mutator-admission-webhook.git
 
 unzip and install:
-cd 
+cd secret-mutator-admission-webhook
 tar -zvf xxxxxxxx
 
 helm install cloud-army-secret-injector secret-mutator
