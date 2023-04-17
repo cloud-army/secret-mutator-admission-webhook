@@ -17,8 +17,7 @@ git clone https://github.com/cloud-army/secret-mutator-admission-webhook.git
 
 unzip and install:
 cd secret-mutator-admission-webhook
-tar -zvf xxxxxxxx
-
+tar -xvf cloud-army-secret-injector-0.1.tgz
 helm install cloud-army-secret-injector secret-mutator
 
 ```
