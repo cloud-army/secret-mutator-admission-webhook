@@ -11,11 +11,12 @@ This is a [Kubernetes admission controller] to be used as a mutating admission w
 ## Installation
 
 ### Deploy Admission Webhook
-To configure the cluster to use the admission webhook and to deploy said webhook, simply download the secret injector helm chart:
+To configure the cluster to use the admission webhook and to deploy said webhook, clone the repo, unzip the helm chart and install:
 ```
-https://github.com/cloud-army/secret-mutator-admission-webhook/releases/download/secret-helm/cloud-army-secret-injector-0.1.tgz
+git clone
 
 unzip and install:
+tar -zvf xxxxxxxx
 
 helm install cloud-army-secret-injector secret-mutator
 
