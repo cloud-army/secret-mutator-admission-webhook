@@ -88,12 +88,12 @@ About the envsecrets-config.json file, it is the place were declaring the GCP Se
 For more information about the envsecrets-config.json file, check this repo https://github.com/cloud-army/envsecrets
 
 
-Contributing
+##Contributing
 
 <p dir="auto">Please see the <a href="https://github.com/cloud-army/secret-mutator-admission-webhook/blob/main/CONTRIBUTING.md">contributing
 guidelines</a>.</p>
 
-License
+##License
 
 <p dir="auto">This library is licensed under Apache 2.0. Full license text is available in
 <a href="https://github.com/cloud-army/secret-mutator-admission-webhook/blob/main/LICENSE">LICENSE</a>.</p>
