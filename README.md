@@ -95,8 +95,8 @@ guidelines</a>.</p>
 
 License
 
-[<p dir="auto">This library is licensed under Apache 2.0. Full license text is available in
-<a href="[[https://github.com/GoogleCloudPlatform/berglas/tree](https://github.com/cloud-army/secret-mutator-admission-webhook/blob/main/)/main/LICENSE](https://github.com/cloud-army/secret-mutator-admission-webhook/blob/main/LICENSE.md)">LICENSE</a>.</p>](https://github.com/cloud-army/secret-mutator-admission-webhook/blob/main/)
+<p dir="auto">This library is licensed under Apache 2.0. Full license text is available in
+<a href="https://github.com/GoogleCloudPlatform/berglas/tree/main/LICENSE">LICENSE</a>.</p>
 
 ### K8S references:
 
