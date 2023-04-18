@@ -88,7 +88,8 @@ About the envsecrets-config.json file, it is the place were declaring the GCP Se
 For more information about the envsecrets-config.json file, check this repo https://github.com/cloud-army/envsecrets
 
 Contributing
-Please see the contributing guidelines.
+<p dir="auto">Please see the <a href="https://github.com/GoogleCloudPlatform/berglas/tree/main/CONTRIBUTING.md">contributing
+guidelines</a>.</p>
 
 
 ### K8S references:
