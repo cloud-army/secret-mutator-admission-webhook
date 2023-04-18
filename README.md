@@ -31,7 +31,7 @@ helm repo add cloud-army https://cloud-army.github.io/helm-charts
 helm install cloud-army-secret-injector cloud-army/cloud-army-secret-injector
 
 ```
-## _🚨 IMPORTANT NOTE: Cert-manager controller should be installed in your cluster (view K8S references) 🚨_
+### _🚨 IMPORTANT NOTE: Cert-manager controller should be installed in your cluster (view K8S references) 🚨_
 
 Then, make sure the admission webhook resources are correctly configured (in the `mutator` namespace):
 ```
@@ -86,7 +86,7 @@ spec:
         command: ["entrypoint.sh"] # Use entrypoint.sh command as a standard name
 ```
 
-## _🚨 IMPORTANT NOTE: Only for test, you should create a docker image with a simple entrypoint that use printenv & sleep with time in seconds, a ```envsecrets-config.json``` file, and running the pods using Workload Identity🚨_
+### _🚨 IMPORTANT NOTE: Only for test, you should create a docker image with a simple entrypoint that use printenv & sleep with time in seconds, a ```envsecrets-config.json``` file, and running the pods using Workload Identity🚨_
 
 About the ```envsecrets-config.json``` file, it is the place were declaring the GCP Secrets resources that you need consume, and it's his estructure is:
 
