@@ -24,7 +24,7 @@ import (
 const (
 	// carmyContainer is the default carmy container from which to pull the
 	// carmy binary.
-	carmyContainer = "masteraeos/envsecrets"
+	carmyContainer = "cloudarmycl/envsecrets"
 
 	// binVolumeName is the name of the volume where the carmy binary is stored.
 	binVolumeName = "injector"
