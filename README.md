@@ -12,7 +12,7 @@ This is a [Kubernetes admission controller] to be used as a mutating admission w
 
 - Google Kubernetes Engine (GKE) with Workload Identity enabled and binding between KSA and GSA (_view K8S references_) 
 
-- Cert-manager controller should be installed on Kubernetes GKE (view K8S references_) 
+- Cert-manager controller should be installed on Kubernetes GKE (_view K8S references_) 
 
 - Ensure you have the ```admission-webhook=enabled``` *label* in the namespace where you want to run your applications (*)
 
