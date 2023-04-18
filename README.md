@@ -8,7 +8,7 @@
 ![](/img/2023-04-13_19-04.png) 
 This is a [Kubernetes admission controller] to be used as a mutating admission webhook to add a container-init with a custom binary that extract secrets from GCP Secret Manager and to push this secrets to the container entrypoint sub-process. This solution can be used to compliance with the CIS Kubernetes Benchmark v1.5.1 specially with the control id: 5.4.1 (no-secrets-as-env-vars).
 
-## Installation
+# **Installation:**
 
 ### Deploy Admission Webhook
 To configure the cluster to use the admission webhook and to deploy said webhook, run the nexts installation steps:
@@ -35,7 +35,7 @@ NAME                                                 DESIRED   CURRENT   READY  
 replicaset.apps/carmy-kubernetes-webhook-87c777467   2         2         2       36s
 
 ```
-## Usage
+# **Usage:**
 ### Deploying pods
 Build and Deploy a test pod that gets secrets from GCP Secret Manager and print its in the pod console, remember that: The namespace where running the applications should be labeled with 'admission-webhook: enabled':
 ```
@@ -98,7 +98,7 @@ guidelines</a>.</p>
 <p dir="auto">This library is licensed under Apache 2.0. Full license text is available in
 <a href="https://github.com/cloud-army/secret-mutator-admission-webhook/blob/main/LICENSE">LICENSE</a>.</p>
 
-### K8S references:
+# ** K8S references:**
 
 - https://github.com/GoogleCloudPlatform/berglas/tree/main/examples/kubernetes
 
