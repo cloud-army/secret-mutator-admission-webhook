@@ -39,6 +39,7 @@ replicaset.apps/carmy-kubernetes-webhook-87c777467   2         2         2      
 ### Deploying pods
 Build and Deploy a test pod that gets secrets from GCP Secret Manager and print its in the pod console, remember that: The namespace where running the applications should be labeled with 'admission-webhook: enabled':
 ```
+kubectl label namespaces [applications_namespace] admission-webhook=enabled
 
 🚀 Building and Deploying a test pod...
 kubectl apply -f manifests/pods-example/pod-example.yaml
