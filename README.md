@@ -98,7 +98,7 @@ guidelines</a>.</p>
 <p dir="auto">This library is licensed under Apache 2.0. Full license text is available in
 <a href="https://github.com/cloud-army/secret-mutator-admission-webhook/blob/main/LICENSE">LICENSE</a>.</p>
 
-# ** K8S references:**
+# **K8S references:**
 
 - https://github.com/GoogleCloudPlatform/berglas/tree/main/examples/kubernetes
 
