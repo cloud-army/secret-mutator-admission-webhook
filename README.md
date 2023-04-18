@@ -87,6 +87,11 @@ About the envsecrets-config.json file, it is the place were declaring the GCP Se
 ```
 For more information about the envsecrets-config.json file, check this repo https://github.com/cloud-army/envsecrets
 
+
+## Contributing
+
+We welcome and encourage contributions to this project! Please read the [Developer](https://www.external-secrets.io/main/contributing/devguide/) and [Contribution process](https://www.external-secrets.io/main/contributing/process/) guides. Also make sure to check the [Code of Conduct](https://www.external-secrets.io/main/contributing/coc/) and adhere to its guidelines.
+
 ### K8S references:
 
 - https://github.com/GoogleCloudPlatform/berglas/tree/main/examples/kubernetes
