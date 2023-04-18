@@ -16,10 +16,6 @@ This is a [Kubernetes admission controller] to be used as a mutating admission w
 
 - Ensure you have the ```admission-webhook=enabled``` *label* in the namespace where you want to run your applications (*)
 
-(*) To create a label in the namespace, use the command:
-```bash
-kubectl label namespaces <applications_namespace> admission-webhook=enabled
-```
 
 ## **Installation:**
 
@@ -54,7 +50,7 @@ replicaset.apps/carmy-kubernetes-webhook-87c777467   2         2         2      
 ## Deploying pods
 Build and Deploy a test pod that gets secrets from GCP Secret Manager and print its in the pod console. 
 
-ℹ️ Remember that: The namespace where running the applications should be labeled with ```admission-webhook: enabled```:
+ℹ️ (*) Remember that: The namespace where running the applications should be labeled with ```admission-webhook: enabled```:
 ```bash
 kubectl label namespaces [applications_namespace] admission-webhook=enabled
 ```
