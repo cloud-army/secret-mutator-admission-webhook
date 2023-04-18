@@ -1,23 +1,33 @@
 <p align="center">
-    <img src="/img/logo.png" width="30%" align="center">
+    <img src="img/logo.png" width="30%" align="center">
 </p>
 
 # cloud-army-secret-admission-controller
 
 
-![](/img/2023-04-13_19-04.png) 
+![](img/2023-04-13_19-04.png) 
 This is a [Kubernetes admission controller] to be used as a mutating admission webhook to add a container-init with a custom binary that extract secrets from GCP Secret Manager and to push this secrets to the container entrypoint sub-process. This solution can be used to compliance with the CIS Kubernetes Benchmark v1.5.1 specially with the control id: 5.4.1 (no-secrets-as-env-vars).
 
-# **Installation:**
+## Requirements
 
-### Deploy Admission Webhook
+- Google Kubernetes Engine (GKE) with Workload Identity enabled and binding between KSA and GSA (_view K8S references_) 
+
+- Cert-manager controller should be installed on Kubernetes GKE (_view K8S references_) 
+
+- Ensure you have the ```admission-webhook=enabled``` *label* in the namespace where you want to run your applications (*)
+
+
+## **Installation:**
+
+## Deploy Admission Webhook
 To configure the cluster to use the admission webhook and to deploy said webhook, run the nexts installation steps:
 ```
 helm repo add cloud-army https://cloud-army.github.io/helm-charts
 
 helm install cloud-army-secret-injector cloud-army/cloud-army-secret-injector
+
 ```
-### _🚨 IMPORTANT NOTE: Cert-manager controller should be installed in your cluster 🚨_
+### _🚨 IMPORTANT NOTE: Cert-manager controller should be installed in your cluster (view K8S references) 🚨_
 
 Then, make sure the admission webhook resources are correctly configured (in the `mutator` namespace):
 ```
@@ -35,14 +45,19 @@ NAME                                                 DESIRED   CURRENT   READY  
 replicaset.apps/carmy-kubernetes-webhook-87c777467   2         2         2       36s
 
 ```
-# **Usage:**
-### Deploying pods
-Build and Deploy a test pod that gets secrets from GCP Secret Manager and print its in the pod console, remember that: The namespace where running the applications should be labeled with 'admission-webhook: enabled':
-```
-kubectl label namespaces [applications_namespace] admission-webhook=enabled
+## **Usage:**
 
+## Deploying pods
+Build and Deploy a test pod that gets secrets from GCP Secret Manager and print its in the pod console. 
+
+ℹ️ (*) Remember that: The namespace where running the applications should be labeled with ```admission-webhook: enabled```:
+```bash
+kubectl label namespaces [applications_namespace] admission-webhook=enabled
+```
 🚀 Building and Deploying a test pod...
+```bash
 kubectl apply -f manifests/pods-example/pod-example.yaml
+```
 pod/envserver created
 
 ```yaml
@@ -62,22 +77,21 @@ spec:
     spec:
       containers:
       - name: envprinter
-        image: xxxxxxxxxx
+        image: # docker image of your application here
         imagePullPolicy: Always
-        command: ["entrypoint.sh"] <<<<< Use entrypoint.sh command as a standard name
-
+        command: ["entrypoint.sh"] # Use entrypoint.sh command as a standard name
 ```
 
-### _🚨 IMPORTANT NOTE: For test, you should create a docker image with a simple entrypoint that use printenv & sleep with time in seconds, a envsecrets-config.json file, and running the pods using Workload Identity🚨_
+### _🚨 IMPORTANT NOTE: Only for test, you should create a docker image with a simple entrypoint that use printenv & sleep with time in seconds, a ```envsecrets-config.json``` file, and running the pods using Workload Identity🚨_
 
-About the envsecrets-config.json file, it is the place were declaring the GCP Secrets resources that you need consume, and it's his estructure is:
+About the ```envsecrets-config.json``` file, it is the place were declaring the GCP Secrets resources that you need consume, and it's his estructure is:
 
 ```json
 {
     "secrets":[
         {
             "env":"",
-            "name":"projects/PROJECT_NUMBER/secrets/YOUR_SECRET_NAME/versions/latest"
+            "name":"projects/GCP_PROJECT_NUMBER/secrets/GCP_SECRET_NAME/versions/latest"
         }
     ],
     "config":
@@ -86,20 +100,32 @@ About the envsecrets-config.json file, it is the place were declaring the GCP Se
         }
 }
 ```
-For more information about the envsecrets-config.json file, check this repo https://github.com/cloud-army/envsecrets
+
+For more information about the ```envsecrets-config.json``` file, check this repo https://github.com/cloud-army/envsecrets
 
 
-# **Contributing:**
+
+## Security Controls  Compliance
+
+CIS Google Kubernetes Engine (GKE) Benchmark v1.5.1 controls:
+
+- 5.4.1 Prefer using secrets as files over secrets as environment variables
+
+- 6.2.2 Prefer using dedicated GCP Service Accounts and Workload Identity 
+
+
+
+## **Contributing:**
 
 <p dir="auto">Please see the <a href="https://github.com/cloud-army/secret-mutator-admission-webhook/blob/main/CONTRIBUTING.md">contributing
 guidelines</a>.</p>
 
-# **License:**
+## **License:**
 
 <p dir="auto">This library is licensed under Apache 2.0. Full license text is available in
 <a href="https://github.com/cloud-army/secret-mutator-admission-webhook/blob/main/LICENSE">LICENSE</a>.</p>
 
-# **K8S references:**
+## **K8S references:**
 
 - https://github.com/GoogleCloudPlatform/berglas/tree/main/examples/kubernetes
 
@@ -112,3 +138,6 @@ guidelines</a>.</p>
 - https://cloud.google.com/anthos-config-management/docs/how-to/using-cis-k8s-benchmark
 
 - https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=es-419
+
+- https://www.cisecurity.org/benchmark/kubernetes
+
