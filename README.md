@@ -94,7 +94,7 @@ Contributing
 guidelines</a>.</p>
 
 License
-This library is licensed under Apache 2.0. Full license text is available in <p dir="auto"><a href="https://github.com/cloud-army/secret-mutator-admission-webhook/blob/main/LICENCE.md">LICENCE</a>.</p>.
+This library is licensed under Apache 2.0. Full license text is available in <p dir="auto"><a href="https://github.com/cloud-army/secret-mutator-admission-webhook/blob/main/LICENSE.md">LICENSE</a>.</p>.
 
 
 ### K8S references:
