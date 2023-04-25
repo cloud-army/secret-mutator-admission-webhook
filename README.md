@@ -103,7 +103,7 @@ About the ```envsecrets-config.json``` file, it is the place were declaring the 
 }
 ```
 
-[![asciicast](https://asciinema.org/a/4zDCbI1Vv7Mm0DV4VL1mUPCCT.svg)](https://asciinema.org/a/4zDCbI1Vv7Mm0DV4VL1mUPCCT)
+[![asciicast](https://asciinema.org/a/4YtvKYyuEfip0oHwO9z68dMlq.svg)](https://asciinema.org/a/4YtvKYyuEfip0oHwO9z68dMlq)
 
 For more information about the ```envsecrets-config.json``` file, check this repo https://github.com/cloud-army/envsecrets
 
