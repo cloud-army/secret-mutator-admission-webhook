@@ -10,7 +10,9 @@ This is a [Kubernetes admission controller] to be used as a mutating admission w
 
 ## Requirements
 
-- Google Kubernetes Engine (GKE) with Workload Identity enabled and binding between KSA and GSA (_view K8S references_) 
+- Google Kubernetes Engine (GKE) with Workload Identity enabled and binding between KSA and GSA (_view K8S references_).
+
+>NOTE: Make sure that the GSA have ```roles/secretmanager.secretAccessor``` IAM Role assigned.
 
 - Cert-manager controller should be installed on Kubernetes GKE (_view K8S references_) 
 
@@ -101,15 +103,19 @@ About the ```envsecrets-config.json``` file, it is the place were declaring the 
 }
 ```
 
+[![asciicast](https://asciinema.org/a/4YtvKYyuEfip0oHwO9z68dMlq.svg)](https://asciinema.org/a/4YtvKYyuEfip0oHwO9z68dMlq)
+
 For more information about the ```envsecrets-config.json``` file, check this repo https://github.com/cloud-army/envsecrets
 
 
 
-## Security Controls  Compliance
+## Security Controls Compliance
 
 CIS Google Kubernetes Engine (GKE) Benchmark v1.5.1 controls:
 
 - 5.4.1 Prefer using secrets as files over secrets as environment variables
+
+>NOTE: Handle secrets as environment variables inside a container is also a bad practice, this method enables to handle the secrets as a environment variable for **ONLY** the **PID** of the running application, wich is more secure for every runtime application.
 
 - 6.2.2 Prefer using dedicated GCP Service Accounts and Workload Identity 
 
@@ -130,6 +136,8 @@ guidelines</a>.</p>
 - https://github.com/GoogleCloudPlatform/berglas/tree/main/examples/kubernetes
 
 - https://www.sobyte.net/post/2023-01/cert-manager-admission-webhook/
+
+- https://cloud.google.com/secret-manager/docs/access-control
 
 - https://cert-manager.io/docs/troubleshooting/webhook/
 
